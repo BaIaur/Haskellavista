@@ -254,3 +254,9 @@ zipWith2 :: (a->b->c) -> [a]->[b]->[c]
 zipWith2 f [] xs    = []
 zipWith2 f ys []    = []
 zipWith2 f (y:ys) (x:xs) = f y x : zipWith2 f ys xs
+
+--isSorted::(a -> a) -> a-> [Integer] -> Bool
+isSorted f  []  = True  --error "nothing in the list which could count as ''sorted''"
+isSorted f  [_] = True
+isSorted f  xs = (foldr2 f xs)
+-- noch nicht funktional versuch-> ich wollte versuchen f als eingabeparameter für fold zu definieren in der isSorted funktion(Z.04)
