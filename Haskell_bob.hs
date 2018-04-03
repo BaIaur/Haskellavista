@@ -238,3 +238,19 @@ newPrimes = sieb [2..]
 allFriendsSmaller n | sum(friends n)< n = (sum(friends n)):[]
              where
              friends n =  [k|k<-[1..n], mod n k == 0]
+             
+take2 :: Int -> [Int] -> [Int]
+take2 n [] = []
+take2 n (x:xs)| n == 0 = []
+			  | n > 0 = x:(take2 (n-1) xs)
+			  | otherwise = []
+				
+filter2 :: (a -> Bool) -> [a] -> [a]
+filter2 p [] = []
+filter2 p (x:xs) | p x       = x : filter2 p xs
+				 | otherwise =     filter2 p xs
+				 
+zipWith2 :: (a->b->c) -> [a]->[b]->[c]
+zipWith2 f [] xs    = []
+zipWith2 f ys []    = []
+zipWith2 f (y:ys) (x:xs) = f y x : zipWith2 f ys xs
