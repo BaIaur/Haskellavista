@@ -238,7 +238,9 @@ newPrimes = sieb [2..]
 allFriendsSmaller n | sum(friends n)< n = (sum(friends n)):[]
              where
              friends n =  [k|k<-[1..n], mod n k == 0]
-             
+ -- noch nicht funktional da ich den dreh noch nicht rausgefunden hab 
+ 
+ 
 take2 :: Int -> [Int] -> [Int]
 take2 n [] = []
 take2 n (x:xs)| n == 0 = []
