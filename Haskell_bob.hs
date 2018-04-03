@@ -83,8 +83,8 @@ mysub2 n a | a<0 = 1-(mysub2 a (n-1))
 		   
 --Betrachten Sie folgende Funktionsdefinition, die eine beliebig lange Liste von Primzahlen berechnet: 
 --primes = sieb [2..]               
-			--where                    
-			--sieb (p:xs) = p:sieb[k | k<-xs, (mod k p)>0] 
+	  --where                    
+	  --sieb (p:xs) = p:sieb[k | k<-xs, (mod k p)>0] 
 --Programmieren Sie damit eine primeOne Funktion, die die ersten n Primzahlen berechnet, die mit der Ziffer 1 enden. 
 --Anwendungsbeispiel:    primeOne  6  =>  [11, 31, 41, 61, 71, 101] 
 
@@ -119,15 +119,15 @@ ganzen Zahl n alle Zahlen zwischen 1 und n aufsummiert, die durch zwei vorgegebe
 
 --sum_mults:: Integer ->[[Integer]]->[Integer]
 --sum_mults n = (foldl + mults)
-						--where mults=[k|k<-[1..n], mod n k == 0]
+		 --where mults=[k|k<-[1..n], mod n k == 0]
 
 arrow::Eq a=>Num a=> a-> a-> a
 arrow k 0 = 1
 arrow k n = k*(arrow k (n-1))	
 	
 primes2 = sieb [2..]               
-			where                    
-			sieb (p:xs) = p:sieb[k | k<-xs, (mod k p)>0]
+	    where                    
+	    sieb (p:xs) = p:sieb[k | k<-xs, (mod k p)>0]
 			
 mersenne n = take n [x|x<-primes2]
 
@@ -146,8 +146,8 @@ binom_naiv n k = product [n,n-1..n-k+1] `div` product [1..k]
 binom_naiv2::Integer -> Integer -> Integer
 binom_naiv2 _ 0 = 1
 binom_naiv2 n k | n==k = 1
-				| n > k = (binom_naiv2 (n-1) (k-1)) + (binom_naiv2 (n-1) k)
-				|otherwise = 0
+		| n > k = (binom_naiv2 (n-1) (k-1)) + (binom_naiv2 (n-1) k)
+		|otherwise = 0
 
 binomtest::Integer -> Integer -> Bool
 binomtest n k = (binom_naiv n k == binom_naiv2 n k)
