@@ -2,13 +2,13 @@ mymax::Ord a=> [a] -> a
 mymax [] = error "no element"
 mymax [x] = x
 mymax (x:xs) | (mymax xs) > x = mymax xs
-			       |  otherwise = x
+	     |  otherwise = x
 			
 mYmin::Ord a=> [a] -> a
 mYmin [] =  error "no element"
 mYmin [x] = x
 mYmin (x:xs) | (mYmin xs) < x = mYmin xs
-			       |  otherwise = x
+	     |  otherwise = x
 				
 myadd::Eq a =>Num a=> a -> a -> a
 myadd 0 a = a
@@ -55,31 +55,31 @@ foldr2 f e (x:xs)= f x (foldr2 f e xs)
 myadd2::Ord a=>Eq a =>Num a=> a -> a -> a
 myadd2 0 a = a
 myadd2 n a | a<0 = (myadd2 a (n-1))+1
-		       | n<0 = (myadd2 (a-1) n)+1
-		       | n<0 && a<0 =  (myadd2 (a+1) n)+1
-		       | otherwise =(myadd2 a (n-1))+1
+	   | n<0 = (myadd2 (a-1) n)+1
+	   | n<0 && a<0 =  (myadd2 (a+1) n)+1
+	   | otherwise =(myadd2 a (n-1))+1
 		   
 add3::Ord a=>Eq a=> Num a=> a-> a ->a
 add3 0 a = a
 add3 n a | a<0 = n+a
-		     | n<0 = n+a
-		     | n<0 && a<0 = n+a
-		     | otherwise = n+a
+	 | n<0 = n+a
+	 | n<0 && a<0 = n+a
+	 | otherwise = n+a
 
 sub3::Ord a=>Eq a=>Num a=> a-> a ->a
 sub3 0 a = a
 sub3 n a | a<0 = a
-		     | n<0 = a-n
-		     | n<0 && a<0 = n-a
-		     | otherwise = -n-a
+	 | n<0 = a-n
+	 | n<0 && a<0 = n-a
+	 | otherwise = -n-a
 		
 mysub2::Ord a=>Eq a =>Num a=> a -> a -> a
 mysub2 0 a = a
 mysub2 a 0 = a
 mysub2 n a | a<0 = 1-(mysub2 a (n-1))
-		       | n<0 = 1-(mysub2 (a-1) n)
-		       | n<0 && a<0 = 1-(mysub2 a (n+1))
-		       | otherwise =1-(mysub2 a (n-1))
+	   | n<0 = 1-(mysub2 (a-1) n)
+	   | n<0 && a<0 = 1-(mysub2 a (n+1))
+	   | otherwise =1-(mysub2 a (n-1))
 		   
 --Betrachten Sie folgende Funktionsdefinition, die eine beliebig lange Liste von Primzahlen berechnet: 
 --primes = sieb [2..]               
@@ -158,18 +158,18 @@ divisors n = [k|k<-[1..n], mod n k == 0]
 
 trueDivisors::[(Integer, [Integer])]
 trueDivisors = map2(\a -> (a,divs)) num
-									where
-									(y:num) = [1..]
-									(x:divs) = [k|k<-[1..], mod x y == 0]
+		  where
+		  (y:num) = [1..]
+		  (x:divs) = [k|k<-[1..], mod x y == 0]
 
 newPrimes::[Integer]
 newPrimes = sieb [2..]
-			where
-			sieb (p:xs) = p:sieb[x|x<-xs,(mod x p)>0]
+		 where
+		 sieb (p:xs) = p:sieb[x|x<-xs,(mod x p)>0]
 
 allFriendsSmaller n | sum(friends n)< n = (sum(friends n)):[]
-						where
-						friends n =  [k|k<-[1..n], mod n k == 0]
+			 where
+			 friends n =  [k|k<-[1..n], mod n k == 0]
 
 
 
