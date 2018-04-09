@@ -257,3 +257,13 @@ isSorted f  []  = True  --error "nothing in the list which could count as ''sort
 isSorted f  [_] = True
 isSorted f  xs = (foldr2 f xs)
 -- noch nicht funktional versuch-> ich wollte versuchen f als eingabeparameter für fold zu definieren in der isSorted funktion(Z.04)
+{--------------------------------------------------------------------------------------------------------------------------------------}
+import Data.List
+difflist (xs)(ys) = (xs \\ ys)
+{--------------------------------------------------------------------------------------------------------------------------------------}
+chars2words2 :: Eq a => a -> [a] -> [[a]]
+chars2words2 delimter [] = []
+chars2words2 delimter zeichen = x : chars2words2 delimter (drop 1 y) 
+				where 
+				(x,y) = span (/= delimter) zeichen
+{--------------------------------------------------------------------------------------------------------------------------------------}
